@@ -130,6 +130,7 @@
     <Content Include="Ads\adtech\image014.png" />
     <Content Include="Ads\adtech\image015.gif" />
     <Content Include="Ads\adtech\image016.png" />
+    <Content Include="Ads\flat\ExampleFlatAd.jpg" />
     <Content Include="Scripts\js\mobDuo.js" />
   </ItemGroup>
   <ItemGroup>
