@@ -73,3 +73,24 @@ textarea
 {
     display: none;
 }
+
+
+/* Mob Duo */
+.stick
+{
+    clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: -3em;
+}
+
+.clearBoth
+{
+    clear: both;
+}
+
+.hidden
+{
+    display: none;
+}

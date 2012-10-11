@@ -131,9 +131,11 @@
     <Content Include="Ads\adtech\image015.gif" />
     <Content Include="Ads\adtech\image016.png" />
     <Content Include="Ads\flat\ExampleFlatAd.jpg" />
-    <Content Include="Scripts\js\mobDuo.js" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ads\flat\MobileBanner.jpg" />
+    <Content Include="Ads\flat\MPU.jpg" />
+    <Content Include="Content\sticky.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -175,6 +177,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\scrollTo.js" />
     <Content Include="Scripts\knockout-1.3.0beta.debug.js" />
     <Content Include="Scripts\knockout-1.3.0beta.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
