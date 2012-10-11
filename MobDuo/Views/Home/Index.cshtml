@@ -15,8 +15,8 @@
             timeBeforeExpand: 5000,
 
             /*initialiseAds: function () {
-                //Quick hack just to get ad in intitial state
-                $('div#bottomBanner').slideToggle('fast');
+            //Quick hack just to get ad in intitial state
+            $('div#bottomBanner').slideToggle('fast');
             },*/
 
             isScrolledIntoView: function (elem) {
@@ -41,7 +41,6 @@
             },
 
             expandAd: function (elem) {
-
                 if (!MobDuo.bottomAdToggled) {
                     //TODO: Get this working - scrolling
                     //$.scrollTo({ top:1000 }, );
@@ -50,12 +49,23 @@
                     $(elem).slideToggle('slow');
                 }
                 MobDuo.bottomAdToggled = true;
+            },
+
+            hideAd: function (elem) {
+                if (MobDuo.bottomAdToggled) {
+                    //TODO: Get this working - scrolling
+                    //$.scrollTo({ top:1000 }, );
+
+
+                    $(elem).slideToggle('slow');
+                }
+                MobDuo.bottomAdToggled = false;
             }
         }
 
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             MobDuo.initialiseAds();
-        });
+        });*/
 
         $(window).scroll(function () {
             if (MobDuo.isScrolledIntoView($('div#articleEnd'))) {
@@ -68,102 +78,119 @@
                 MobDuo.endArticleViewed = false;
             }
 
-            if (MobDuo.isScrolledIntoView($('div#commentEnd'))) {
+            if (MobDuo.isScrolledIntoView($('div#footer'))) {
                 if (!MobDuo.endCommentViewed) {
                     setTimeout('expandBottomAd()', MobDuo.timeBeforeExpand);
                 }
                 MobDuo.endCommentViewed = true;
             }
-            else if (MobDuo.isScrolledOutOfView($('div#commentEnd'))) {
+            else if (MobDuo.isScrolledOutOfView($('div#footer'))) {
+                hideBottomAd();
                 MobDuo.endCommentViewed = false;
             }
         });
 
         function expandBottomAd() {
-            //alert('expanding');
             MobDuo.expandAd($('div#footer'));
+
+            setTimeout('scrollToFooter()', 1000);
+        }
+
+        function scrollToFooter() {
+            var elemTop = $('div#footer').offset().top;
+            var elemBottom = elemTop + $('div#footer').height();
+
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            $.scrollTo(docViewBottom + elemBottom, 800);
+        }
+
+        function hideBottomAd() {
+            MobDuo.hideAd($('div#footer'));
         }
 
         function stickArticleEndAd() {
-            //alert('sticking ad');
-            $('div#articleEnd').addClass('stick');
+            $('div#articleEnd').addClass('sticky');
         }
     </script>
 }
-
 <div id="adContainer">
 
     <div id="topBanner"><img src="/Ads/flat/MobileBanner.jpg" alt="banner" /></div>
-    
-    <div class="clearBoth"></div>
-    
-    <div id="article">
 
-        <h2>Mob Duo Demonstration</h2>
+    <div id="content">
+    
+        <div class="clearBoth"></div>
+    
+        <div id="article">
 
-        <div id="content">
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget dui ipsum. Donec felis augue, consequat ut consequat vel, tempus ac turpis. Mauris et nisl non augue posuere faucibus ac vitae dui. Vivamus euismod, est vitae pulvinar euismod, mi orci varius mi, in porta massa magna ac neque. Donec semper consequat leo eu posuere. Pellentesque tempor nulla justo, quis semper dolor. Pellentesque tincidunt facilisis erat non ornare. Phasellus at est augue, vel euismod libero. Donec malesuada enim mauris, eu scelerisque nunc. Morbi id elit justo, non lobortis sapien. Aenean lorem dui, dignissim et ultrices vel, pharetra sed mauris. Proin non magna eu tellus imperdiet vestibulum non at enim.
-            Integer eu nulla enim. Donec laoreet est vitae magna facilisis a interdum odio interdum. Aliquam sed hendrerit felis. Nulla mollis urna eu lectus vulputate pulvinar. Nullam elementum tincidunt interdum. Etiam suscipit libero risus. In pellentesque mi et sapien placerat sodales. Nulla at orci eu nisl tincidunt bibendum. Sed ut nunc et turpis tempus vehicula non ac tortor. Phasellus volutpat lorem id lectus rutrum varius. Vestibulum ornare, turpis ut volutpat adipiscing, neque justo ornare risus, et sodales lectus erat sed arcu. Vivamus congue gravida erat ut cursus. Nunc non erat ac enim congue ullamcorper. Suspendisse potenti.
-            Duis et ornare tellus. Morbi sit amet velit id magna facilisis suscipit in at lorem. Praesent mollis hendrerit sapien, id dignissim orci consectetur non. Curabitur faucibus, velit quis faucibus suscipit, tortor turpis consequat magna, quis porta ligula velit in augue. Etiam vitae risus ante, ut mollis nisl. Vivamus sit amet eros ut tortor scelerisque aliquam. Nullam dui purus, placerat fringilla luctus facilisis, volutpat ac massa. Suspendisse vitae purus purus. Vivamus fringilla elementum dignissim. Sed nibh ligula, aliquam a aliquet id, semper at erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec porta, est non ullamcorper auctor, felis diam bibendum nibh, pulvinar tristique nisl est non urna. Proin rutrum, diam ac ultricies blandit, leo neque rutrum lacus, vel bibendum metus odio in magna.
-            </p>
-            <p>
-            Nullam placerat arcu id dui pharetra lobortis. Etiam at metus sit amet sapien iaculis sagittis at id orci. Sed tristique, tortor at dignissim pharetra, ante nunc eleifend felis, ut dignissim nibh purus eget dui. Morbi dictum enim nec ligula interdum sit amet molestie arcu vestibulum. Curabitur vitae ornare ante. Quisque porttitor ante vel sem facilisis varius. Maecenas eget mi interdum enim pulvinar porttitor mattis id arcu. Pellentesque eros risus, tempor a lacinia quis, gravida in libero. Fusce aliquet elementum pharetra. Fusce semper fringilla massa, non mollis mi interdum vel.
-            Vivamus auctor lacus vitae lacus aliquet iaculis vulputate leo congue. Sed placerat felis eu augue tincidunt in consectetur tellus lacinia. Nunc semper pulvinar lacinia. Mauris id sem at ante blandit tempus. Ut sapien libero, placerat quis molestie eu, placerat non tortor. Nam pellentesque eleifend nibh et tempus. Pellentesque hendrerit fermentum nisl, mollis bibendum orci commodo consectetur. Vivamus mi purus, elementum id semper interdum, eleifend a augue. Cras vestibulum ultrices nisl id commodo. Ut non velit quis nisl rutrum dapibus in sed ipsum. Suspendisse commodo odio a orci condimentum viverra. Integer gravida congue massa, a suscipit leo ornare sed. Proin odio tortor, vehicula eu blandit in, congue sed nulla. Donec a augue quis tortor lobortis faucibus. Sed sed ante urna. Curabitur sit amet purus et libero laoreet interdum eu vitae purus.
-            Sed nisl libero, dictum eget ultricies id, pretium quis lacus. Nullam diam massa, gravida in egestas at, consectetur sit amet nisi. Nullam malesuada odio sed dolor sodales consequat. Proin vestibulum porttitor pharetra. Aliquam feugiat rutrum nunc id sodales. Mauris rhoncus posuere tincidunt. Aliquam pharetra, enim vel elementum pharetra, urna libero ullamcorper urna, et auctor felis elit et leo. Nulla et ante mi. Duis mattis vulputate ante vel blandit.
-            </p>
-            <p>
-            Etiam eget nisi eu ante gravida semper et nec lorem. Morbi eu interdum libero. Ut lectus leo, pulvinar at luctus eu, imperdiet et nunc. Curabitur eget magna a tellus semper fringilla. Suspendisse id placerat tellus. Pellentesque imperdiet mauris nec justo blandit ultricies. Donec placerat odio vel dui sagittis sit amet fringilla velit fringilla. Suspendisse tincidunt ante cursus tortor gravida mattis. Aenean vitae hendrerit nibh. Duis eu enim orci, in placerat ante. Aenean sagittis ornare tellus posuere egestas. Donec suscipit porta lectus, sed adipiscing nisl placerat in. Vivamus ac ipsum elit, vitae commodo tortor. Aenean semper metus a erat ullamcorper tristique.
-            Phasellus commodo consectetur nisi, quis vulputate felis aliquet sit amet. Quisque non mollis nibh. Pellentesque sed viverra quam. Mauris at lacus neque, nec porttitor orci. Fusce quis consequat felis. Aliquam ligula est, sollicitudin a auctor ac, porttitor in leo. Cras euismod iaculis cursus. Morbi sit amet sem vel ipsum mollis tincidunt.
-            Sed dolor arcu, aliquam in euismod vel, venenatis id augue. Praesent scelerisque lacinia fermentum. In ipsum nulla, porttitor vulputate tristique eu, accumsan ut tellus. Nullam a dui non nunc rhoncus rhoncus aliquet quis dolor. Etiam eget urna massa, sed blandit lacus. In malesuada, ligula eu lacinia congue, sem augue semper lectus, eget ornare quam magna et elit. Curabitur nec lorem eget nisl aliquam dictum. Aenean luctus mauris non dolor hendrerit auctor. Donec sed metus vel turpis feugiat lobortis congue sed metus.
-            </p>
-            <p>
-            Pellentesque sed nunc et odio commodo rhoncus et in est. Mauris in volutpat tortor. Nunc lacinia tortor sit amet arcu varius ac pulvinar lectus accumsan. Cras pretium adipiscing luctus. Vestibulum quam massa, euismod gravida sodales ac, sagittis eu mi. Aenean ipsum lacus, volutpat ac pretium ut, gravida id nunc. Fusce turpis nibh, auctor ut elementum eget, tincidunt quis nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-            Nulla placerat cursus turpis id tempus. In rhoncus risus condimentum ante euismod elementum dignissim neque ultrices. Maecenas dapibus porttitor libero at consequat. In ut turpis in metus aliquet convallis. Duis at urna sit amet nunc egestas porta. Nam id vehicula nunc. Maecenas leo tellus, porttitor et malesuada in, venenatis at dolor.
-            Mauris nisi orci, pharetra sit amet blandit vel, pulvinar lacinia nibh. Donec tempus, purus quis porttitor ullamcorper, felis quam pretium leo, sed bibendum sapien sapien sed sapien.     
-            </p>
+            <h2>Mob Duo Demonstration</h2>
+
+            <div id="content">
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget dui ipsum. Donec felis augue, consequat ut consequat vel, tempus ac turpis. Mauris et nisl non augue posuere faucibus ac vitae dui. Vivamus euismod, est vitae pulvinar euismod, mi orci varius mi, in porta massa magna ac neque. Donec semper consequat leo eu posuere. Pellentesque tempor nulla justo, quis semper dolor. Pellentesque tincidunt facilisis erat non ornare. Phasellus at est augue, vel euismod libero. Donec malesuada enim mauris, eu scelerisque nunc. Morbi id elit justo, non lobortis sapien. Aenean lorem dui, dignissim et ultrices vel, pharetra sed mauris. Proin non magna eu tellus imperdiet vestibulum non at enim.
+                Integer eu nulla enim. Donec laoreet est vitae magna facilisis a interdum odio interdum. Aliquam sed hendrerit felis. Nulla mollis urna eu lectus vulputate pulvinar. Nullam elementum tincidunt interdum. Etiam suscipit libero risus. In pellentesque mi et sapien placerat sodales. Nulla at orci eu nisl tincidunt bibendum. Sed ut nunc et turpis tempus vehicula non ac tortor. Phasellus volutpat lorem id lectus rutrum varius. Vestibulum ornare, turpis ut volutpat adipiscing, neque justo ornare risus, et sodales lectus erat sed arcu. Vivamus congue gravida erat ut cursus. Nunc non erat ac enim congue ullamcorper. Suspendisse potenti.
+                Duis et ornare tellus. Morbi sit amet velit id magna facilisis suscipit in at lorem. Praesent mollis hendrerit sapien, id dignissim orci consectetur non. Curabitur faucibus, velit quis faucibus suscipit, tortor turpis consequat magna, quis porta ligula velit in augue. Etiam vitae risus ante, ut mollis nisl. Vivamus sit amet eros ut tortor scelerisque aliquam. Nullam dui purus, placerat fringilla luctus facilisis, volutpat ac massa. Suspendisse vitae purus purus. Vivamus fringilla elementum dignissim. Sed nibh ligula, aliquam a aliquet id, semper at erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec porta, est non ullamcorper auctor, felis diam bibendum nibh, pulvinar tristique nisl est non urna. Proin rutrum, diam ac ultricies blandit, leo neque rutrum lacus, vel bibendum metus odio in magna.
+                </p>
+                <p>
+                Nullam placerat arcu id dui pharetra lobortis. Etiam at metus sit amet sapien iaculis sagittis at id orci. Sed tristique, tortor at dignissim pharetra, ante nunc eleifend felis, ut dignissim nibh purus eget dui. Morbi dictum enim nec ligula interdum sit amet molestie arcu vestibulum. Curabitur vitae ornare ante. Quisque porttitor ante vel sem facilisis varius. Maecenas eget mi interdum enim pulvinar porttitor mattis id arcu. Pellentesque eros risus, tempor a lacinia quis, gravida in libero. Fusce aliquet elementum pharetra. Fusce semper fringilla massa, non mollis mi interdum vel.
+                Vivamus auctor lacus vitae lacus aliquet iaculis vulputate leo congue. Sed placerat felis eu augue tincidunt in consectetur tellus lacinia. Nunc semper pulvinar lacinia. Mauris id sem at ante blandit tempus. Ut sapien libero, placerat quis molestie eu, placerat non tortor. Nam pellentesque eleifend nibh et tempus. Pellentesque hendrerit fermentum nisl, mollis bibendum orci commodo consectetur. Vivamus mi purus, elementum id semper interdum, eleifend a augue. Cras vestibulum ultrices nisl id commodo. Ut non velit quis nisl rutrum dapibus in sed ipsum. Suspendisse commodo odio a orci condimentum viverra. Integer gravida congue massa, a suscipit leo ornare sed. Proin odio tortor, vehicula eu blandit in, congue sed nulla. Donec a augue quis tortor lobortis faucibus. Sed sed ante urna. Curabitur sit amet purus et libero laoreet interdum eu vitae purus.
+                Sed nisl libero, dictum eget ultricies id, pretium quis lacus. Nullam diam massa, gravida in egestas at, consectetur sit amet nisi. Nullam malesuada odio sed dolor sodales consequat. Proin vestibulum porttitor pharetra. Aliquam feugiat rutrum nunc id sodales. Mauris rhoncus posuere tincidunt. Aliquam pharetra, enim vel elementum pharetra, urna libero ullamcorper urna, et auctor felis elit et leo. Nulla et ante mi. Duis mattis vulputate ante vel blandit.
+                </p>
+                <p>
+                Etiam eget nisi eu ante gravida semper et nec lorem. Morbi eu interdum libero. Ut lectus leo, pulvinar at luctus eu, imperdiet et nunc. Curabitur eget magna a tellus semper fringilla. Suspendisse id placerat tellus. Pellentesque imperdiet mauris nec justo blandit ultricies. Donec placerat odio vel dui sagittis sit amet fringilla velit fringilla. Suspendisse tincidunt ante cursus tortor gravida mattis. Aenean vitae hendrerit nibh. Duis eu enim orci, in placerat ante. Aenean sagittis ornare tellus posuere egestas. Donec suscipit porta lectus, sed adipiscing nisl placerat in. Vivamus ac ipsum elit, vitae commodo tortor. Aenean semper metus a erat ullamcorper tristique.
+                Phasellus commodo consectetur nisi, quis vulputate felis aliquet sit amet. Quisque non mollis nibh. Pellentesque sed viverra quam. Mauris at lacus neque, nec porttitor orci. Fusce quis consequat felis. Aliquam ligula est, sollicitudin a auctor ac, porttitor in leo. Cras euismod iaculis cursus. Morbi sit amet sem vel ipsum mollis tincidunt.
+                Sed dolor arcu, aliquam in euismod vel, venenatis id augue. Praesent scelerisque lacinia fermentum. In ipsum nulla, porttitor vulputate tristique eu, accumsan ut tellus. Nullam a dui non nunc rhoncus rhoncus aliquet quis dolor. Etiam eget urna massa, sed blandit lacus. In malesuada, ligula eu lacinia congue, sem augue semper lectus, eget ornare quam magna et elit. Curabitur nec lorem eget nisl aliquam dictum. Aenean luctus mauris non dolor hendrerit auctor. Donec sed metus vel turpis feugiat lobortis congue sed metus.
+                </p>
+                <p>
+                Pellentesque sed nunc et odio commodo rhoncus et in est. Mauris in volutpat tortor. Nunc lacinia tortor sit amet arcu varius ac pulvinar lectus accumsan. Cras pretium adipiscing luctus. Vestibulum quam massa, euismod gravida sodales ac, sagittis eu mi. Aenean ipsum lacus, volutpat ac pretium ut, gravida id nunc. Fusce turpis nibh, auctor ut elementum eget, tincidunt quis nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                Nulla placerat cursus turpis id tempus. In rhoncus risus condimentum ante euismod elementum dignissim neque ultrices. Maecenas dapibus porttitor libero at consequat. In ut turpis in metus aliquet convallis. Duis at urna sit amet nunc egestas porta. Nam id vehicula nunc. Maecenas leo tellus, porttitor et malesuada in, venenatis at dolor.
+                Mauris nisi orci, pharetra sit amet blandit vel, pulvinar lacinia nibh. Donec tempus, purus quis porttitor ullamcorper, felis quam pretium leo, sed bibendum sapien sapien sed sapien.     
+                </p>
+            </div>
+
+            <div class="clearBoth"></div>
+
+            <div id="articleEnd"><img src="/Ads/flat/MobileBanner.jpg" alt="banner" /></div>
+
+            <div class="clearBoth"></div>
         </div>
-
-        <div class="clearBoth"></div>
-
-        <div id="articleEnd"><img src="/Ads/flat/MobileBanner.jpg" alt="banner" /></div>
-
-        <div class="clearBoth"></div>
-    </div>
     
-    <div id="comments">
-        <h3>Comments</h3>
+        <div class="clearBoth"></div>
+
+        <div id="comments">
+            <h3>Comments</h3>
         
-        <h4>Comment 1</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 1</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
 
-        <h4>Comment 2</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 2</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
 
-        <h4>Comment 3</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 3</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
 
-        <h4>Comment 4</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 4</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
         
-        <h4>Comment 5</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 5</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
 
-        <h4>Comment 6</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 6</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
 
-        <h4>Comment 7</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 7</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
 
-        <h4>Comment 8</h4>
-        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+            <h4>Comment 8</h4>
+            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
+        </div>
     </div>
-
-    <div class="clear"></div>
-
-    <div id="footer" class="hidden">
-        <img src="/Ads/flat/MPU.jpg" alt="MPU" />
-    </div>
-
-    <div id="commentEnd"></div>
 </div>
+
+<div id="footer" class="hidden">
+    <img src="/Ads/flat/MPU.jpg" alt="MPU" />
+</div>
+
+<div id="scrollTo"></div>
