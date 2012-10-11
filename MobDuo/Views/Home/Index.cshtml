@@ -78,14 +78,17 @@
                 MobDuo.endArticleViewed = false;
             }
 
-            if (MobDuo.isScrolledIntoView($('div#footer'))) {
+            if (MobDuo.isScrolledIntoView($('div#footer'))){ 
+                alert('footer in view');
                 if (!MobDuo.endCommentViewed) {
                     setTimeout('expandBottomAd()', MobDuo.timeBeforeExpand);
                 }
                 MobDuo.endCommentViewed = true;
             }
             else if (MobDuo.isScrolledOutOfView($('div#footer'))) {
-                hideBottomAd();
+                if (MobDuo.endCommentViewed) {
+                    hideBottomAd();
+                }
                 MobDuo.endCommentViewed = false;
             }
         });
@@ -97,6 +100,7 @@
         }
 
         function scrollToFooter() {
+            alert('scrolling to footer');
             var elemTop = $('div#footer').offset().top;
             var elemBottom = elemTop + $('div#footer').height();
 
@@ -111,7 +115,6 @@
         }
 
         function stickArticleEndAd() {
-            $('div#articleEnd').addClass('sticky');
         }
     </script>
 }
@@ -188,6 +191,8 @@
         </div>
     </div>
 </div>
+
+<div class="clearBoth"></div>
 
 <div id="footer" class="hidden">
     <img src="/Ads/flat/MPU.jpg" alt="MPU" />
