@@ -13,11 +13,34 @@
             bottomBannerId: '#bottomBanner',
             containerId: '#adContainer',
 
+            endArticleViewed: false,
+            endCommentViewed: false,
+
             adloc: '/Ads/flat/ExampleFlatAd.jpg',
 
             initialiseAds: function () {
                 $('div#topBanner').html('<img src="' + this.adloc + '" />');
                 $('div#bottomBanner').html('<img src="' + this.adloc + '" />');
+            },
+
+            isScrolledIntoView : function (elem) {
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+
+                var elemTop = $(elem).offset().top;
+                var elemBottom = elemTop + $(elem).height();
+
+                return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+            },
+
+            isScrolledOutOfView : function (elem) {
+                var docViewTop = $(window).scrollTop();
+                var docViewBottom = docViewTop + $(window).height();
+
+                var elemTop = $(elem).offset().top;
+                var elemBottom = elemTop + $(elem).height();
+
+                return ((elemBottom >= docViewBottom) && (elemTop >= docViewBottom) || (elemBottom <= docViewTop) && (elemTop <= docViewTop));
             }
         }
 
@@ -25,9 +48,28 @@
             MobDuo.initialiseAds();
         });
 
-        $('div#topBanner').html('testing!!!!');
-    </script>
+        $(window).scroll(function () {
+            if (MobDuo.isScrolledIntoView($('div#articleEnd'))) {
+                if (!MobDuo.endArticleViewed) {
+                    alert('End of article');
+                }
+                MobDuo.endArticleViewed = true;
+            }
+            else if (MobDuo.isScrolledOutOfView($('div#articleEnd'))) {
+                MobDuo.endArticleViewed = false;
+            }
 
+            if (MobDuo.isScrolledIntoView($('div#commentEnd'))) {
+                if (!MobDuo.endCommentViewed) {
+                    alert('End of comment');
+                }
+                MobDuo.endCommentViewed = true;
+            }
+            else if (MobDuo.isScrolledOutOfView($('div#commentEnd'))) {
+                MobDuo.endCommentViewed = false;
+            }
+        });
+    </script>
 }
 
 <div id="adContainer">
@@ -65,7 +107,42 @@
             Mauris nisi orci, pharetra sit amet blandit vel, pulvinar lacinia nibh. Donec tempus, purus quis porttitor ullamcorper, felis quam pretium leo, sed bibendum sapien sapien sed sapien.     
             </p>
         </div>
+        <div id="articleEnd">
+            [ARTICLE END DIV]
+        </div>
     </div>
+    
+    <div id="comments">
+        <h3>Comments</h3>
+        
+        <h4>Comment 1</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+
+        <h4>Comment 2</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+
+        <h4>Comment 3</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+
+        <h4>Comment 4</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+        
+        <h4>Comment 5</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+
+        <h4>Comment 6</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+
+        <h4>Comment 7</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+
+        <h4>Comment 8</h4>
+        <p>I'm a little tea pot shot and stout. Here's my handle and here's my spout.</p>
+    </div>
+
+    <div id="commentEnd">
+            [COMMENT END DIV]
+        </div>
 
     <div id="bottomBanner">
     
