@@ -97,11 +97,12 @@ textarea
 #adContainer, #topBanner, #footer
 {
     background-color: Red;
+    position: relative;
 }
 
 img
 {
-    /*display: block; margin-left: auto; margin-right: auto*/
+    display: block; margin-left: auto; margin-right: auto
 }
 
 #articleEnd {
