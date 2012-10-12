@@ -96,7 +96,7 @@ textarea
 
 #adContainer, #topBanner, #footer
 {
-    background-color: Red;
+    background-color: #2382AE;
     position: relative;
 }
 
@@ -108,7 +108,7 @@ img
 #articleEnd {
     width: 100%;
     height: 100%;
-     position:fixed;
+    position:fixed;
     bottom: 100px;
     left: 100px;
 }
@@ -121,5 +121,17 @@ img
 {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#emailAd
+{
+    margin-left: 60px;
+    margin-right: 40px;
+    padding: 5px;
+    padding-bottom: 10px;
+}
+
+#content
+{
     background-color: White;
 }
