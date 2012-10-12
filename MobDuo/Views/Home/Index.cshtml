@@ -25,7 +25,12 @@
 
 
                 //TODO: Need to debug why windows scrolls to bottom when footer isnt in view
-
+                if ($('#element').attr('id') == "footer") {
+                    alert("Elem Top : " + elemTop);
+                    alert("Elem Bottom : " + elemBottom);
+                    alert("Doc View Top : " + docViewTop);
+                    alert("Dov View Bottom : " + docViewBottom);
+                }
 
 
                 return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom)
@@ -81,7 +86,7 @@
                 MobDuo.endArticleViewed = false;
             }*/
 
-            if (MobDuo.isScrolledIntoView($('div#footer'))) {
+            if (MobDuo.isScrolledIntoView($('div#scrollTo'))) {
                 if (!MobDuo.endCommentViewed) {
                     setTimeout('expandBottomAd()', MobDuo.timeBeforeExpand);
                 }
@@ -100,8 +105,8 @@
         }
 
         function scrollToFooter() {
-            var elemTop = $('div#footer').offset().top;
-            var elemBottom = elemTop + $('div#footer').height();
+            var elemTop = $('div#scrollTo').offset().top;
+            var elemBottom = elemTop + $('div#scrollTo').height();
 
             var docViewTop = $(window).scrollTop();
             var docViewBottom = docViewTop + $(window).height();
