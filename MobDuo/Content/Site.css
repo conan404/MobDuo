@@ -106,15 +106,10 @@ img
 }
 
 #articleEnd {
-    width: 100%;
-    height: 100%;
-    position:fixed;
-    bottom: 100px;
-    left: 100px;
-}
-
-#articleEnd {
     z-index: 1;
+    text-align: center;
+    width: 100%;
+    background-color: #2382AE;
 }
 
 #content
@@ -130,6 +125,7 @@ img
     padding: 5px;
     padding-bottom: 10px;
 }
+
 #emailAd p, #emailAd h3 
 {
     color: White;
@@ -138,4 +134,30 @@ img
 #content
 {
     background-color: White;
+}
+
+
+.articleEndAd {
+    width: 320px;
+    height: 50px;
+    position:relative;
+    top: -10px;
+    left: 0px;
+    z-index: 1;
+    margin-bottom: -40px;
+}
+
+
+.articleEndAdFixed {
+    width: 320px;
+    height: 50px;
+    position:fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#footer
+{
+    z-index:2;
 }

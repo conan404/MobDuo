@@ -76,7 +76,7 @@
 
         $(window).scroll(function () {
             ///Put this back in with ArticleEnd div 
-            /*if (MobDuo.isScrolledIntoView($('div#articleEnd'))) {
+            if (MobDuo.isScrolledIntoView($('div#articleEnd'))) {
                 if (!MobDuo.endArticleViewed) {
                     stickArticleEndAd();
                 }
@@ -84,7 +84,7 @@
             }
             else if (MobDuo.isScrolledOutOfView($('div#articleEnd'))) {
                 MobDuo.endArticleViewed = false;
-            }*/
+            }
 
             if (MobDuo.isScrolledIntoView($('div#scrollTo'))) {
                 if (!MobDuo.endCommentViewed) {
@@ -119,7 +119,8 @@
         }
 
         function stickArticleEndAd() {
-            $('div#articleEnd').addClass('sticky');
+            $('div#articleEnd').removeClass();
+            $('div#articleEnd').addClass('articleEndAdFixed');
         }
     </script>
 }
@@ -172,9 +173,10 @@
 
             <div class="clearBoth"></div>
 
-            <!--<div id="articleEnd"><img src="/Ads/flat/MobileBanner.jpg" alt="banner" /></div>
+            <div id="articleEnd" class="articleEndAd"><img src="Ads/flat/MobileBanner.jpg" alt="banner" /></div>
+            <!--<div class="articleEndAdFixed hidden"><img src="Ads/flat/MobileBanner.jpg" alt="banner" /></div>-->
 
-            <div class="clearBoth"></div>-->
+            <div class="clearBoth"></div>
         </div>
     
         <div class="clearBoth"></div>
