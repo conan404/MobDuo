@@ -12,26 +12,14 @@
             endArticleViewed: false,
             endCommentViewed: false,
             bottomAdToggled: false,
-            timeBeforeExpand: 5000,
+            timeBeforeExpand: 3000,
 
             isScrolledIntoView: function (elem) {
-
                 var docViewTop = $(window).scrollTop();
                 var docViewBottom = docViewTop + $(window).height();
 
                 var elemTop = $(elem).offset().top;
                 var elemBottom = elemTop + $(elem).height();
-
-
-
-                //TODO: Need to debug why windows scrolls to bottom when footer isnt in view
-                if ($('#element').attr('id') == "footer") {
-                    alert("Elem Top : " + elemTop);
-                    alert("Elem Bottom : " + elemBottom);
-                    alert("Doc View Top : " + docViewTop);
-                    alert("Dov View Bottom : " + docViewBottom);
-                }
-
 
                 return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom)
                             && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
@@ -56,23 +44,17 @@
 
             hideAd: function (elem) {
                 if (MobDuo.bottomAdToggled) {
-                    //TODO: Get this working - scrolling
-                    //$.scrollTo({ top:1000 }, );
-
-
                     $(elem).slideToggle('slow');
                 }
                 MobDuo.bottomAdToggled = false;
             },
 
             showEmailForm: function (elem) {
-                $('div#emailAd').slideToggle('slow');
+                $('div#emailAdForm').slideToggle('slow');
+
+                setTimeout('scrollToEmail()', 1000);
             }
         }
-
-        /*$(document).ready(function () {
-            MobDuo.initialiseAds();
-        });*/
 
         $(window).scroll(function () {
             ///Put this back in with ArticleEnd div 
@@ -105,6 +87,9 @@
             MobDuo.expandAd($('div#footer'));
 
             setTimeout('scrollToFooter()', 1000);
+
+            //$('div#articleEnd').removeClass();
+            //$('div#articleEnd').AddClass('hidden');
         }
 
         function scrollToFooter() {
@@ -115,10 +100,25 @@
             var docViewBottom = docViewTop + $(window).height();
 
             $.scrollTo(docViewBottom + elemBottom, 800);
+
+            //$('div#articleEnd').removeClass();
+            $('div#articleEnd').addClass('hidden');
+        }
+
+        function scrollToEmail() {
+            var elemTop = $('div#scrollToEmail').offset().top;
+            var elemBottom = elemTop + $('div#scrollToEmail').height();
+
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
+
+            $.scrollTo(docViewBottom + elemBottom, 800);
         }
 
         function hideBottomAd() {
             MobDuo.hideAd($('div#footer'));
+
+            $('div#articleEnd').removeClass('hidden');
         }
 
         function stickArticleEndAd() {
@@ -184,8 +184,6 @@
             <div class="clearBoth"></div>
 
             <div id="articleEnd" class="articleEndAd"><img src="Ads/flat/MobileBanner.jpg" alt="banner" /></div>
-            <!--<div class="articleEndAdFixed hidden"><img src="Ads/flat/MobileBanner.jpg" alt="banner" /></div>-->
-
         </div>
     
         <div id="comments">
@@ -216,21 +214,28 @@
             <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
         </div>
     </div>
-
-    <div id="emailAd" class="hidden">
-        <h3>Email to a friend, or yourself</h3>
-        <p>Email this ad to someone, or to yourself to be viewed later</p>
-
-        <form id="emailForm">
-            <p><label for="email">Email: </label><input id="email" name="email" value="" type="text" /><input type="submit" value="send" /></p>
-        </form>
-    </div>
 </div>
 
-
-
 <div id="footer" class="hidden">
-    <img src="/Ads/flat/MPU.jpg" alt="MPU" onclick="MobDuo.showEmailForm()"/>
+    <div id="mpu">
+        <img src="/Ads/flat/MPU.jpg" alt="MPU" />
+    </div>
+
+    <div id="emailAd">
+        <div id="shareTools" onclick="MobDuo.showEmailForm()">
+            <span><img src="/img/share-white_s3.png" class="left" alt="share image" /></span><span class="shareText">Share</span>
+        </div>
+        <div class="clearBoth"></div>
+        <div id="emailAdForm" class="hidden">
+            <h3>Email to a friend, or yourself</h3>
+            <p>Email this ad to someone, or to yourself to be viewed later</p>
+
+            <form id="emailForm">
+                <p><label for="email">Email: </label><input id="email" name="email" value="" type="text" /><input type="submit" value="send" /></p>
+            </form>
+        </div>
+    </div>
+    <div id="scrollToEmail"></div>
 </div>
 
 <div id="scrollTo"></div>

@@ -98,38 +98,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Ads\adtech\Ad.com_Adtech_Color_RGBA_min_noMargin.gif" />
-    <Content Include="Ads\adtech\AOL Inc..png" />
-    <Content Include="Ads\adtech\ATT00001.htm" />
-    <Content Include="Ads\adtech\ATT00002.htm" />
-    <Content Include="Ads\adtech\ATT00003.htm" />
-    <Content Include="Ads\adtech\ATT00004.htm" />
-    <Content Include="Ads\adtech\ATT00005.htm" />
-    <Content Include="Ads\adtech\ATT00006.htm" />
-    <Content Include="Ads\adtech\ATT00007.htm" />
-    <Content Include="Ads\adtech\ATT00008.htm" />
-    <Content Include="Ads\adtech\ATT00009.htm" />
-    <Content Include="Ads\adtech\ATT00010.htm" />
-    <Content Include="Ads\adtech\ATT00011.htm" />
-    <Content Include="Ads\adtech\ATT00012.htm" />
-    <Content Include="Ads\adtech\ATT00013.htm" />
-    <Content Include="Ads\adtech\ATT00014.htm" />
-    <Content Include="Ads\adtech\ATT00015.htm" />
-    <Content Include="Ads\adtech\ATT00016.htm" />
-    <Content Include="Ads\adtech\ATT00017.htm" />
-    <Content Include="Ads\adtech\ATT00018.htm" />
-    <Content Include="Ads\adtech\http__adtech.com_pages_signatures_Adtech_London_SignaturBanner_Canvas_EN01.gif" />
-    <Content Include="Ads\adtech\http__www.adtech.com_pages_signatures_ad-tech-london.gif" />
-    <Content Include="Ads\adtech\http__www.adtech.com_pages_signatures_arrow-button.png" />
-    <Content Include="Ads\adtech\image001.png" />
-    <Content Include="Ads\adtech\image009.png" />
-    <Content Include="Ads\adtech\image010.png" />
-    <Content Include="Ads\adtech\image011.png" />
-    <Content Include="Ads\adtech\image012.png" />
-    <Content Include="Ads\adtech\image013.gif" />
-    <Content Include="Ads\adtech\image014.png" />
-    <Content Include="Ads\adtech\image015.gif" />
-    <Content Include="Ads\adtech\image016.png" />
     <Content Include="Ads\flat\ExampleFlatAd.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -202,12 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Ads\adtech\Ad.com_Adtech__2012logo_Gray_RGB" />
-    <None Include="Ads\adtech\Ad[1].com_Adtech__2012logo_Gray_RGB" />
-    <None Include="Ads\adtech\cidimage002.gif%4001CBFFA8.B0184400" />
-    <None Include="Ads\adtech\cidimage003.gif%4001CBFFA8.B0184400" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
