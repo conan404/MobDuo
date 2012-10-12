@@ -83,6 +83,9 @@
                 MobDuo.endArticleViewed = true;
             }
             else if (MobDuo.isScrolledOutOfView($('div#articleEnd'))) {
+                if (MobDuo.endArticleViewed) {
+                    unStickArticleEndAd();
+                }
                 MobDuo.endArticleViewed = false;
             }
 
@@ -122,6 +125,11 @@
             $('div#articleEnd').removeClass();
             $('div#articleEnd').addClass('articleEndAdFixed');
         }
+
+        function unStickArticleEndAd() {
+            $('div#articleEnd').removeClass();
+            $('div#articleEnd').addClass('articleEndAd');
+        }
     </script>
 }
 <div id="adContainer">
@@ -138,15 +146,17 @@
                 <div class="article_desciption">
                     <h1>Microsoft takes on Amazon with Azure Virtual Machines update</h1>
                     <p>
-                        <a href="/v3-uk/news/2182818/microsoft-takes-amazon-azure-virtual-machines-update"><img alt="Clouds superimposed on a computer keyboard" src="/img/news.jpg" title="Clouds superimposed on a computer keyboard" /></a>
-                    </p>
+                        <a href="/v3-uk/news/2182818/microsoft-takes-amazon-azure-virtual-machines-update"><img alt="Clouds superimposed on a computer keyboard" src="/img/news.jpg" title="Clouds superimposed on a computer keyboard" class="articleImg" /></a>
+                    </p> 
+                    <div class="clearBoth"></div>
+
                     <p>
-                        <span>Daniel Robinson | V3 | 07 June 2012 | 16:01 
-                        </span>
+                        <div class="author">Daniel Robinson | V3 | 07 June 2012 | 16:01 
+                        </div>
                     </p>
                 </div>
-                <div class="article_content">
-                    Azure now enables Windows and Linux workloads to be migrated to the cloud 
+                <div class="article_tag">
+                    <p>Azure now enables Windows and Linux workloads to be migrated to the cloud</p>
                 </div>
                 <div class="article_content">
                     <p>Microsoft has updated its <a href="http://www.windowsazure.com/en-us/" target="_blank" title="Windows Azure">Windows Azure</a> cloud computing services with Infrastructure-as-a-Service (IaaS) capabilities, offering explicit support for running virtual machines, including the ability to migrate workloads to the cloud and securely link Windows Azure with on-premise systems.</p>
@@ -176,25 +186,22 @@
             <div id="articleEnd" class="articleEndAd"><img src="Ads/flat/MobileBanner.jpg" alt="banner" /></div>
             <!--<div class="articleEndAdFixed hidden"><img src="Ads/flat/MobileBanner.jpg" alt="banner" /></div>-->
 
-            <div class="clearBoth"></div>
         </div>
     
-        <div class="clearBoth"></div>
-
         <div id="comments">
             <h3>Comments</h3>
         
-            <h4>Comment 1</h4>
-            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
+            <h4>I love Microsoft</h4>
+            <p>What a great article</p>
 
-            <h4>Comment 2</h4>
-            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
+            <h4>Wow</h4>
+            <p>I didn't you could do this</p>
 
-            <h4>Comment 3</h4>
-            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
+            <h4>Cool - This looks really good</h4>
+            <p>I'm going to definitley have a look at this. This the future man.</p>
 
-            <h4>Comment 4</h4>
-            <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>
+            <h4>Hmm, I didn't know this existed</h4>
+            <p>How much does this sort of thing cost?????</p>
         
             <h4>Comment 5</h4>
             <p>I'm a little tea pot short and stout. Here's my handle and here's my spout.</p>

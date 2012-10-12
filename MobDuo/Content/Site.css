@@ -86,7 +86,7 @@ textarea
 .clearBoth
 {
     clear: both;
-    height: 20px;
+    height: 15px;
 }
 
 .hidden
@@ -105,6 +105,13 @@ img
     display: block; margin-left: auto; margin-right: auto
 }
 
+img.articleImg
+{
+    float: left;
+    clear:left;
+    margin-top: 8px;
+}
+
 #articleEnd {
     z-index: 1;
     text-align: center;
@@ -112,10 +119,20 @@ img
     background-color: #2382AE;
 }
 
-#content
+#content, #comments
 {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+#comments
+{
+    padding-bottom: 60px;
+}
+
+#comments h3
+{
+    color: #5AA6C8;
 }
 
 #emailAd
@@ -160,4 +177,25 @@ img
 #footer
 {
     z-index:2;
+}
+
+h3
+{
+    font-size: 1.5em;
+}
+
+p
+{
+    margin-bottom: 10px;
+}
+
+.article_tag p
+{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.author
+{
+    color: #666;
 }
