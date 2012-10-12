@@ -130,6 +130,10 @@ img
     padding: 5px;
     padding-bottom: 10px;
 }
+#emailAd p, #emailAd h3 
+{
+    color: White;
+}
 
 #content
 {
